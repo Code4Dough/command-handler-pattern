@@ -1,11 +1,11 @@
-# Command-Handler-Pattern
+# Panama - a simple command architecture for .Net
 
-Command-handler-pattern is a unique design pattern, created to simplify software design and more suitable in designing systems for over 70% of medium and large scale business design projects. It's goal is to reduce complexity normally found in N-Tier application where there are multiple layers (i.e. Service Layer, DataAcces Layer) required to invoke commands (i.e. save an object to a database). With the command-handler-pattern, the ability to invoke commands is reduced to one object that can be called directly from the UI or other top layer that a user or service may interact with directly.
+Panama is a unique design pattern, created to simplify software design and more suitable in designing systems for over 70% of medium and large scale business design projects. It's goal is to reduce complexity normally found in N-Tier application where there are multiple layers (i.e. Service Layer, DataAcces Layer) required to invoke commands (i.e. save an object to a database). With Panama, the ability to invoke commands is reduced to one object that can be called directly from the UI or other top layer that a user or service may interact with directly.
 
 ## Getting Started
-The command-handler-pattern is built around a central Handler class that uses a fluent api to wire up validators and commands and invoked using the Invoke() method. 
+Panama is built around a central Handler class that uses a fluent api to wire up validators and commands and invoked using the Invoke() method. 
 
-![alt text](https://raw.githubusercontent.com/mrogunlana/command-handler-pattern/master/screenshots/The-Command-Handler-Architecture-by-Diran-Ogunlana-012.jpg "The-Command-Handler-Architecture-by-Diran-Ogunlana-012.jpg")
+![alt text](https://raw.githubusercontent.com/mrogunlana/Panama/master/screenshots/The-Command-Handler-Architecture-by-Diran-Ogunlana-012.jpg "The-Command-Handler-Architecture-by-Diran-Ogunlana-012.jpg")
 
 ### The Handler class and IoC
 The Handler class constructor takes in a ServiceLocator that is used to find commands and validators. The project includes a sample for use with Autofac, but any IoC container could work, it would just need to be implemented behind an IServiceLocator interface. Commands implement the ICommand interface and validators implement IValidator interface. Depending on how your IoC of choice works, you would wire up your specific implementations to the interface. Or if your IoC supports auto locating classes by interface, all the classes can be wired up and instantiated. Here is a sample of how to use Autofac to locate and instantiate all classes implementing the IValidator interface as singletons.
